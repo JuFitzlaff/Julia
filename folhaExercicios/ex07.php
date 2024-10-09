@@ -24,7 +24,9 @@ Mariazinha em comparação ao valor a vista do carro.-->
             $totalPago = ($valorParcela * $numParcelas);
             $jurosPago = ($totalPago - $valorAVista);
                
-            echo "Valor total gasto com juros: " .number_format($jurosPago, 2, ',', '.');
+            echo "Valor à vista: ".number_format($valorAVista, 2, ',', '.')."<br>";
+            echo "Valor total parcelado: ".number_format($totalPago, 2, ',', '.')."<br>";
+            echo "Valor total gasto com juros: ".number_format($jurosPago, 2, ',', '.');
         ?>
     </body>
 </html>

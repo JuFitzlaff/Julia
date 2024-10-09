@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Paulinho foi comprar uma moto nova. A empresa vende motos muito baratas pois
+<!--8. Paulinho foi comprar uma moto nova. A empresa vende motos muito baratas pois
 utiliza Juros Simples para o cálculo das parcelas.
 Sabendo então que o valor a vista do moto é R$ 8.654,00.
 Crie um programa que calcule o valor das parcelas para as opções abaixo, sabendo que
@@ -18,24 +18,24 @@ a taxa de juros aumenta 0,5% em cada nível e inicia em 1,5% para 24 vezes:
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Valor das Parcelas</h1>
+        <h1>Valor das Parcelas (Juros Simples)</h1>
 
         <?php
             function calcularParcelas($valorMoto, $parcelas, $juros) {
                 $n = $parcelas;
-                $i = $juros / 100; // Converte a taxa de juros para decimal
+                $i = $juros / 100;
                 $valorTotal = $valorMoto * (1 + $i * $n);
                 $valorParcela = $valorTotal / $n;
                 return $valorParcela;
             }
-                $valorMoto = 8654.00;
-                $jurosInicial = 1.5; // 1,5%
-                $parcelasOpcoes = [24, 36, 48, 60];
+            $valorMoto = 8654.00;
+            $jurosInicial = 1.5;
+            $parcelasOpcoes = [24, 36, 48, 60];
             
             foreach ($parcelasOpcoes as $chave => $parcelas) {
-                $juros = $jurosInicial + ($chave * 0.5); // Aumenta 0,5% para cada opção
+                $juros = $jurosInicial + ($chave * 0.5);
                 $valorParcela = calcularParcelas($valorMoto, $parcelas, $juros);
-                echo "Valor da parcela para $parcelas vezes (taxa de juros: " . number_format($juros, 2) . "%): R$ " . number_format($valorParcela, 2) . "\n";
+                echo "Valor da parcela para ".$parcelas."x (taxa de juros: ".number_format($juros, 2)."%): R$ ".number_format($valorParcela, 2)."<br>";
             }
         ?>
     </body>

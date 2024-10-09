@@ -24,6 +24,24 @@ t = Tempo-->
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1></h1>
+        <h1>Valor das Parcelas (Juros Compostos)</h1>
+
+        <?php
+            function calcularParcelas($valorMoto, $parcelas, $juros) {
+                $i = $juros / 100;
+                $montante = $valorMoto * ((1 + $i)**$parcelas);
+                $valorParcela = $montante / $parcelas;
+                return $valorParcela;
+            }
+            $valorMoto = 8654.00;
+            $jurosInicial = 2.0;
+            $parcelasOpcoes = [24, 36, 48, 60];
+
+            foreach ($parcelasOpcoes as $chave => $parcelas) {
+                $juros = $jurosInicial + ($chave * 0.3);
+                $valorParcela = calcularParcelas($valorMoto, $parcelas, $juros);
+                echo "Valor da parcela para ".$parcelas."x (taxa de juros: ".number_format($juros, 2)."%): R$ ".number_format($valorParcela, 2, ',', '.')."<br>";
+            }
+        ?>
     </body>
 </html>
