@@ -30,7 +30,10 @@ usando a tag h1, se não, escrever com h3.-->
             $lado =  isset($_POST['lado']) ? $_POST['lado'] : 0;
             $base =  isset($_POST['base']) ? $_POST['base'] : 0;
 
-            $area = $lado * $base;
+            function areaRetangulo($lado, $base) {
+                return $lado * $base;
+            }
+            $area = areaRetangulo($lado, $base);
 
             function estiloResultado($lado, $base, $area) {
                 if ($area > 10) {

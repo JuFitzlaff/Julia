@@ -84,7 +84,6 @@ frase em verde afirmando que o saldo para compras foi esgotado.-->
                 }
                 return $mensagem;
             }
-
             echo previsaoDinheiro($totalCompra);
         ?>
     </body>

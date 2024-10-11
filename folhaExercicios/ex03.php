@@ -24,9 +24,11 @@ quadrado de lado 3 metros é 9 metros quadrados”-->
         <br>
         <?php
             $n =  isset($_POST['num']) ? $_POST['num'] : 0;
-            $area = $n * $n;
 
-            echo "<h3>A área do quadrado de lado ".$n." metros é ".$area." metros quadrados.</h3>";
+            function areaQuadrado($n) {
+                return $n * $n;
+            }
+            echo "<h3>A área do quadrado de lado ".$n." metros é ".areaQuadrado($n)." metros quadrados.</h3>";
         ?>
     </body>
 </html>

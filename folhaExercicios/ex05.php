@@ -30,9 +30,10 @@ Fórmula -> Resultado = (Base * Altura) / 2-->
             $base =  isset($_POST['base']) ? $_POST['base'] : 0;
             $altura =  isset($_POST['altura']) ? $_POST['altura'] : 0;
 
-            $area = ($base * $altura) / 2;
-
-            echo "<h3>Resultado: ".$area;
+            function areaTrianguloRetangulo($base, $altura) {
+                return ($base * $altura) / 2;
+            }
+            echo "<h3>Resultado: ".areaTrianguloRetangulo($base, $altura);
         ?>
     </body>
 </html>

@@ -45,7 +45,7 @@ Resultado da árvore:
                 }
             }
         }
-            imprimeArvore($pastas);
+        imprimeArvore($pastas);
         ?>
     </body>
 </html>
