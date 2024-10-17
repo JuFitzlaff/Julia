@@ -19,7 +19,7 @@
             <h1 class="header-title h3">HRAV - Hospital Regional do Alto Vale</h3>
         </div>
 
-        <a href="login..php">
+        <a href="login.php">
             <button type="button" class="btn btn-primary rounded-5 px-3">Área Administrador</button>
         </a>
     </header>
