@@ -14,7 +14,9 @@
 
   <body class="d-flex flex-column justify-content-center align-items-center align-content-center">
     <main class="container d-flex flex-column justify-content-center align-items-center align-content-center gap-5 bg-light p-5 rounded-5 my-5">
+      <a href="index.php">
         <img src="./assets/logo-green.png" alt="Logo do Hospital Regional do Alto Vale em verde" title="Logo do Hospital do Alto Vale" width="200px" />
+      </a>
 
         <h2 class="display-6 text-center">
             O Hospital Regional Alto Vale (HRAV) <strong>agradece</strong> sua resposta e

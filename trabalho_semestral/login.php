@@ -15,8 +15,10 @@
   <body class="d-flex flex-column">
     <header class="container-fluid d-flex flex-row justify-content-start align-content-center bg-light py-3">
         <div class="d-flex flex-row gap-4 justify-content-center align-content-center">
-            <img src="./assets/logo-green.png" alt="Logo do Hospital Regional do Alto Vale em verde" title="Logo do Hospital do Alto Vale" width="50px" />
-            <h1 class="header-title h3">HRAV - Hospital Regional do Alto Vale</h3>
+            <a href="index.php">
+                <img src="./assets/logo-green.png" alt="Logo do Hospital Regional do Alto Vale em verde" title="Logo do Hospital do Alto Vale" width="50px" />
+            </a>
+                <h1 class="header-title h3">HRAV - Hospital Regional do Alto Vale</h3>
         </div>
     </header>
 

@@ -19,7 +19,9 @@
             <h1 class="header-title h3">HRAV - Hospital Regional do Alto Vale</h3>
         </div>
 
-        <button type="button" class="btn btn-primary rounded-5 px-3">Área Administrador</button>
+        <a href="login..php">
+            <button type="button" class="btn btn-primary rounded-5 px-3">Área Administrador</button>
+        </a>
     </header>
 
     <main class="container my-3 bg-white rounded-5 d-flex flex-column gap-5 main">
@@ -226,7 +228,9 @@
             </div>
     
             <footer class="action">
-                <button type="button" class="btn btn-primary rounded-5 px-3">Enviar resposta</button>
+                <a href="obrigado.php">
+                    <button type="button" class="btn btn-primary rounded-5 px-3">Enviar resposta</button>
+                </a>
             </footer> 
         </section>   
     </main>
