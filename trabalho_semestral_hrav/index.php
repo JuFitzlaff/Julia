@@ -223,7 +223,7 @@
 
         <section>
             <div class="mb-3">
-                <label for="sugestao" class="form-label"><strong>Deixe uma sugestão para que possamos melhorar sua experiência no futuro (opcional)</strong></label>
+                <label for="sugestao" class="form-label"><strong>Deixe uma sugestão para que possamos melhorar sua experiência no futuro (opcional):</strong></label>
                 <textarea class="form-control" id="sugestao" rows="3"></textarea>
             </div>
     
