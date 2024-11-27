@@ -8,15 +8,21 @@ include 'bd.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obter a sugestão (feedback textual)
     $sugestao = isset($_POST['sugestao']) ? pg_escape_string($_POST['sugestao']) : null;
-    $id_setor = 1;  // Defina o ID do setor (substitua conforme necessário)
-    $id_dispositivo = 1;  // Defina o ID do dispositivo (substitua conforme necessário)
+
+    // Exibir conteúdo de $_POST para depuração
+    echo "<pre>";
+    var_dump($_POST);  // Verificar o que está sendo enviado
+    echo "</pre>";
 
     // Iterar sobre as perguntas enviadas e inserir as respostas na tabela tbavaliacao
     foreach ($_POST as $key => $value) {
-        // Verificar se o campo pertence a uma pergunta
+        // Verificar se o campo pertence a uma pergunta (name=pergunta_X)
         if (strpos($key, 'pergunta_') === 0) {
-            // Extrair o ID da pergunta
-            $id_pergunta = substr($key, 10);  // O ID da pergunta vem depois de "pergunta_"
+            // Extrair o ID da pergunta a partir do nome do campo
+            $id_pergunta = substr($key, 9);  // O ID da pergunta começa após "pergunta_"
+
+            // Verificar se o ID da pergunta foi extraído corretamente
+            echo "ID da pergunta: $id_pergunta, Resposta: $value<br>";
 
             // Verificar se o valor de id_pergunta e a resposta são válidos
             if (isset($id_pergunta) && is_numeric($id_pergunta) && is_numeric($value) && $value >= 0 && $value <= 10) {
@@ -24,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $feedback_textual = ($sugestao && $sugestao !== "") ? "'" . pg_escape_string($sugestao) . "'" : "NULL";
 
                 // Construir a consulta SQL para inserir os dados na tabela tbavaliacao
-                $sql = "INSERT INTO public.tbavaliacao (id_setor, id_pergunta, id_dispositivo, resposta, feedback_textual)
-                        VALUES ($id_setor, $id_pergunta, $id_dispositivo, $value, $feedback_textual)";
+                $sql = "INSERT INTO public.tbavaliacao (id_pergunta, resposta, feedback_textual)
+                        VALUES ($id_pergunta, $value, $feedback_textual)";
 
                 // Executar a consulta SQL
                 $result = pg_query($conn, $sql);
@@ -44,9 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Mensagem de sucesso após inserção
-    echo "Respostas enviadas com sucesso!";
     // Fechar a conexão com o banco de dados
     pg_close($conn);
+
+    // Redirecionar para a página 'obrigado.php' após a inserção bem-sucedida
+    header("Location: ../obrigado.php");
+    exit();
 }
 ?>
+
