@@ -1,16 +1,13 @@
 <?php
-//Conectar ao banco de dados
+//Arquivo para apresentar as perguntas na página inicial (somente as que estão ativas)
 include 'bd.php';
 
-//Consulta SQL para buscar perguntas ativas
+
 $sql = "SELECT id_pergunta, descricao_pergunta FROM public.tbpergunta WHERE status = TRUE";
 
-//Executa a consulta
 $result = pg_query($conn, $sql);
 
-//Verifica se existem perguntas para exibir
 if (pg_num_rows($result) > 0) {
-    //Exibe as perguntas encontradas
     while ($row = pg_fetch_assoc($result)) {
         $id_pergunta = $row['id_pergunta'];
         $descricao_pergunta = $row['descricao_pergunta'];
@@ -28,8 +25,7 @@ if (pg_num_rows($result) > 0) {
         <?php
     }
 } else {
-    echo "<p>Não há perguntas disponíveis.</p>";
+    echo "<p>Não há perguntas ativas.</p>";
 }
-//Fecha a conexão com o banco de dados
 pg_close($conn);
 ?>

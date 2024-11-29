@@ -27,10 +27,8 @@
             <p><em>Sua avaliação espontânea é anônima, nenhuma informação pessoal é solicitada ou armazenada.</em></p>
         </div>
 
-        <!-- Arquivo das respostas -->
         <form action="src/respostas.php" method="POST">
             <?php
-            //Arquivo de perguntas
             include 'src/perguntas.php';
             ?>
 

@@ -26,38 +26,31 @@
         </div>
 
         <div class="d-flex flex-column justify-content-end align-items-end align-content-end flex-wrap gap-2">
-            <!-- Botão de cadastro de nova pergunta -->
             <button type="button" class="btn btn-primary rounded-5 px-3" onclick="window.location.href='cadastro_pergunta.php';">Cadastrar questão</button>
 
-            <!-- Tabela com as perguntas -->
             <table class="table table-hover table-light rounded-5">
                 <thead>
                     <tr>
                         <th scope="col" class="table-dark">#</th>
                         <th scope="col" class="table-dark">Descrição</th>
                         <th scope="col" class="table-dark">Status</th>
-                        <th scope="col" class="table-dark">Ações</th> <!-- Coluna de Ações -->
+                        <th scope="col" class="table-dark">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    //Arquivo de listagem das perguntas
                     include 'src/listar_pergunta.php';
 
-                    //Exibe as perguntas cadastradas
                     while ($row = pg_fetch_assoc($result)) {
-                        //Verifica e exibe o status como "Ativo" ou "Inativo"
                         $status = ($row['status'] === 't') ? 'Ativo' : 'Inativo';
 
                         echo "<tr>";
-                        echo "<th scope='row'>" . htmlspecialchars($row['id_pergunta']) . "</th>";
-                        echo "<td>" . htmlspecialchars($row['descricao_pergunta']) . "</td>";
+                        echo "<th scope='row'>" . ($row['id_pergunta']) . "</th>";
+                        echo "<td>" . ($row['descricao_pergunta']) . "</td>";
                         echo "<td>" . $status . "</td>";
                         echo "<td>";
-                        //Botão Editar
-                        echo "<a href='src/editar_pergunta.php?id=" . htmlspecialchars($row['id_pergunta']) . "' class='btn btn-warning btn-sm'>Editar</a> ";
-                        //Botão Excluir
-                        echo "<a href='src/excluir_pergunta.php?id=" . htmlspecialchars($row['id_pergunta']) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</a>";
+                        echo "<a href='src/editar_pergunta.php?id=" . ($row['id_pergunta']) . "' class='btn btn-warning btn-sm'>Editar</a> ";
+                        echo "<a href='src/excluir_pergunta.php?id=" . ($row['id_pergunta']) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</a>";
                         echo "</td>";
                         echo "</tr>";
                     }

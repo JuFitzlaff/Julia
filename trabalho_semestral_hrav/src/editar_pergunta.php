@@ -1,18 +1,14 @@
 <?php
-//Conectar ao banco de dados
+//Arquivo para consultar os dados da tabela e também contém a tela de editar
 include 'bd.php';
 
-//Obter o ID da pergunta via GET
 $id_pergunta = $_GET['id'];
 
-//Consultar os dados da pergunta
 $query = "SELECT * FROM public.tbpergunta WHERE id_pergunta = $1";
 $result = pg_query_params($conn, $query, array($id_pergunta));
 
-//Buscar os dados da pergunta
 $row = pg_fetch_assoc($result);
 
-//Fechar a conexão com o banco de dados após a consulta
 pg_close($conn);
 ?>
 
