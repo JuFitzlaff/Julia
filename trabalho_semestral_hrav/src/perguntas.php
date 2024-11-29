@@ -2,7 +2,6 @@
 //Arquivo para apresentar as perguntas na página inicial (somente as que estão ativas)
 include 'bd.php';
 
-
 $sql = "SELECT id_pergunta, descricao_pergunta FROM public.tbpergunta WHERE status = TRUE";
 
 $result = pg_query($conn, $sql);
