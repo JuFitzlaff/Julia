@@ -8,10 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
   </head>
+
   <body class="d-flex flex-column">
     <header class="container-fluid d-flex flex-row justify-content-between align-content-center bg-light py-3">
         <div class="d-flex flex-row gap-4 justify-content-center align-content-center">
-            <img src="./assets/logo-green.png" alt="Logo do Hospital Regional do Alto Vale em verde" title="Logo do Hospital do Alto Vale" width="50px" />
+            <a href="index.php">
+                <img src="./assets/logo-green.png" alt="Logo do Hospital Regional do Alto Vale em verde" title="Logo do Hospital do Alto Vale" width="50px" />
+            </a>
             <h1 class="header-title h3">HRAV - Hospital Regional do Alto Vale</h1>
         </div>
     </header>
@@ -24,7 +27,7 @@
 
         <div class="d-flex flex-column justify-content-end align-items-end align-content-end flex-wrap gap-2">
             <!-- Botão de cadastro de nova pergunta -->
-            <button type="button" class="btn btn-primary rounded-5 px-3" onclick="window.location.href='questao.php';">Cadastrar questão</button>
+            <button type="button" class="btn btn-primary rounded-5 px-3" onclick="window.location.href='cadastro_pergunta.php';">Cadastrar questão</button>
 
             <!-- Tabela com as perguntas -->
             <table class="table table-hover table-light rounded-5">
@@ -38,22 +41,22 @@
                 </thead>
                 <tbody>
                     <?php
-                    // Incluir o arquivo de listagem das perguntas
+                    //Arquivo de listagem das perguntas
                     include 'src/listar_pergunta.php';
 
-                    // Exibir as perguntas cadastradas
+                    //Exibe as perguntas cadastradas
                     while ($row = pg_fetch_assoc($result)) {
-                        // Verificar o status e exibir "Ativo" ou "Inativo"
-                        $status = ($row['status'] === 't') ? 'Ativo' : 'Inativo'; // Valida se o valor é 't' (verdadeiro) ou outro valor
+                        //Verifica e exibe o status como "Ativo" ou "Inativo"
+                        $status = ($row['status'] === 't') ? 'Ativo' : 'Inativo';
 
                         echo "<tr>";
                         echo "<th scope='row'>" . htmlspecialchars($row['id_pergunta']) . "</th>";
                         echo "<td>" . htmlspecialchars($row['descricao_pergunta']) . "</td>";
                         echo "<td>" . $status . "</td>";
                         echo "<td>";
-                        // Botão Editar
+                        //Botão Editar
                         echo "<a href='src/editar_pergunta.php?id=" . htmlspecialchars($row['id_pergunta']) . "' class='btn btn-warning btn-sm'>Editar</a> ";
-                        // Botão Excluir
+                        //Botão Excluir
                         echo "<a href='src/excluir_pergunta.php?id=" . htmlspecialchars($row['id_pergunta']) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</a>";
                         echo "</td>";
                         echo "</tr>";

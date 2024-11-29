@@ -1,7 +1,5 @@
 <?php
-// bd.php
-
-// Configuração de conexão com o banco de dados usando pg_connect
+// Configuração de conexão com o banco de dados
 $host = 'localhost';
 $port = '5432';
 $dbname = 'postgres';

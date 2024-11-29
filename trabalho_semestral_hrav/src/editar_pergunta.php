@@ -1,30 +1,18 @@
 <?php
-// Conectar ao banco de dados
-include 'bd.php';  // Arquivo com a conexão ao banco de dados
+//Conectar ao banco de dados
+include 'bd.php';
 
-// Obter o ID da pergunta via GET
+//Obter o ID da pergunta via GET
 $id_pergunta = $_GET['id'];
 
-// Verificar se o ID é válido
-if (empty($id_pergunta) || !is_numeric($id_pergunta)) {
-    echo "ID inválido!";
-    exit;
-}
-
-// Consultar os dados da pergunta
+//Consultar os dados da pergunta
 $query = "SELECT * FROM public.tbpergunta WHERE id_pergunta = $1";
 $result = pg_query_params($conn, $query, array($id_pergunta));
 
-// Verificar se a consulta foi bem-sucedida
-if (!$result || pg_num_rows($result) == 0) {
-    echo "Pergunta não encontrada!";
-    exit;
-}
-
-// Buscar os dados da pergunta
+//Buscar os dados da pergunta
 $row = pg_fetch_assoc($result);
 
-// Fechar a conexão com o banco de dados
+//Fechar a conexão com o banco de dados após a consulta
 pg_close($conn);
 ?>
 
@@ -33,10 +21,10 @@ pg_close($conn);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Avalia o Hospital</title>
-    <link rel="icon" href="./assets/favicon-32x32.png" type="image/png" />
+    <title>Editar Pergunta</title>
+    <link rel="icon" href="../assets/favicon-32x32.png" type="image/png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
 
   <body class="d-flex flex-column">
@@ -53,7 +41,6 @@ pg_close($conn);
             <p>Edite os dados da pergunta abaixo.</p>
         </div>
 
-        <!-- Formulário de edição -->
         <form action="atualizar_pergunta.php" method="POST">
             <input type="hidden" name="id_pergunta" value="<?php echo $row['id_pergunta']; ?>" />
 
@@ -65,8 +52,8 @@ pg_close($conn);
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select" id="status" name="status" required>
-                    <option value="1" <?php if ($row['status'] == 1) echo "selected"; ?>>Ativo</option>
-                    <option value="0" <?php if ($row['status'] == 0) echo "selected"; ?>>Inativo</option>
+                    <option value="true" <?php echo ($row['status'] === true) ? "selected" : ""; ?>>Ativo</option>
+                    <option value="false" <?php echo ($row['status'] === false) ? "selected" : ""; ?>>Inativo</option>
                 </select>
             </div>
 
@@ -75,7 +62,8 @@ pg_close($conn);
         </form>
     </main>
 
-     <!-- SCRIPTS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+
